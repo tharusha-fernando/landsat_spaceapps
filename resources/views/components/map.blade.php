@@ -1,14 +1,10 @@
 <div id="map" style="height: 300px;"></div>
 
-<!-- Leaflet CSS -->
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"  crossorigin="anonymous" />
+<!-- Leaflet CSS without integrity -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" crossorigin="anonymous" />
 
-<!-- Leaflet JS -->
-<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"  crossorigin="anonymous"></script>
-{{-- integrity="sha384-JxhK+SkSAfJYagLfihyJbG1Jp1wsPHLzlmrn/TXjqR6M5EGhB74xmrElnElw58Vw" --}}
-{{-- integrity="sha384-xodZBNTC5n17Xt2mL7bI5IQ9JIZQ5gpT0OTXKTgF5r6o3CzrNlTXEj+rUMqqvMkg" --}}
-{{-- integrity="sha384-xodZBNTC5n17Xt2mL7bI5IQ9JIZQ5gpT0OTXKTgF5r6o3CzrNlTXEj+rUMqqvMkg" --}}
-{{-- integrity="sha384-xodZBNTC5n17Xt2mL7bI5IQ9JIZQ5gpT0OTXKTgF5r6o3CzrNlTXEj+rUMqqvMkg" --}}
+<!-- Leaflet JS without integrity -->
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" crossorigin="anonymous"></script>
 
 <script>
     var map = L.map('map').setView([51.505, -0.09], 2);
@@ -20,8 +16,14 @@
     var marker;
 
     function updateLatLngFields(lat, lng) {
-        document.querySelector('input[name="latitude"]').value = lat;
-        document.querySelector('input[name="longitude"]').value = lng;
+        // Ensure that these inputs actually exist before trying to update them
+        var latInput = document.querySelector('input[name="latitude"]');
+        var lngInput = document.querySelector('input[name="longitude"]');
+        
+        if (latInput && lngInput) {
+            latInput.value = lat;
+            lngInput.value = lng;
+        }
     }
 
     map.on('click', function(e) {
@@ -37,11 +39,11 @@
     });
 
     // Set default marker if lat/long already exist
-    var existingLat = document.querySelector('input[name="latitude"]').value;
-    var existingLng = document.querySelector('input[name="longitude"]').value;
+    var existingLat = document.querySelector('input[name="latitude"]')?.value;
+    var existingLng = document.querySelector('input[name="longitude"]')?.value;
 
     if (existingLat && existingLng) {
         marker = L.marker([existingLat, existingLng]).addTo(map);
         map.setView([existingLat, existingLng], 12);
     }
-</script
+</script>
