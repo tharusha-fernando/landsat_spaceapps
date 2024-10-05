@@ -35,12 +35,12 @@ class LocationResource extends Resource
         //         Forms\Components\TextInput::make('latitude')
         //             ->label('Latitude')
         //             ->required()
-        //             ->disabled(), // We will update it via the map
+        //             ->readonly(), // We will update it via the map
 
         //         Forms\Components\TextInput::make('longitude')
         //             ->label('Longitude')
         //             ->required()
-        //             ->disabled(), // We will update it via the map
+        //             ->readonly(), // We will update it via the map
 
         //         Forms\Components\Fieldset::make('Location Map')
         //             ->schema([
@@ -60,13 +60,13 @@ class LocationResource extends Resource
                 Forms\Components\TextInput::make('latitude')
                     ->label('Latitude')
                     // ->hidden() // Hide this input in the form
-                    ->disabled()
+                    ->readonly()
                     ->required(),
 
                 Forms\Components\TextInput::make('longitude')
                     ->label('Longitude')
                     // ->hidden() // Hide this input in the form
-                    ->disabled()
+                    ->readonly()
                     ->required(),
                 // Automatically assign the authenticated user's ID to the user_id field
                 Forms\Components\Hidden::make('user_id')

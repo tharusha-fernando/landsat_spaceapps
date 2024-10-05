@@ -16,14 +16,9 @@
     var marker;
 
     function updateLatLngFields(lat, lng) {
-        // Ensure that these inputs actually exist before trying to update them
-        var latInput = document.querySelector('input[id="data.latitude"]');
-        var lngInput = document.querySelector('input[id="data.longitude"]');
-        
-        if (latInput && lngInput) {
-            latInput.value = lat;
-            lngInput.value = lng;
-        }
+        // Use Livewire to set the values dynamically
+        @this.set('data.latitude', lat);
+        @this.set('data.longitude', lng);
     }
 
     map.on('click', function(e) {
@@ -39,8 +34,8 @@
     });
 
     // Set default marker if lat/long already exist
-    var existingLat = document.querySelector('input[id="data.latitude"]')?.value;
-    var existingLng = document.querySelector('input[id="data.longitude"]')?.value;
+    var existingLat = @this.get('data.latitude');
+    var existingLng = @this.get('data.longitude');
 
     if (existingLat && existingLng) {
         marker = L.marker([existingLat, existingLng]).addTo(map);
