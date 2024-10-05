@@ -17,8 +17,8 @@
 
     function updateLatLngFields(lat, lng) {
         // Ensure that these inputs actually exist before trying to update them
-        var latInput = document.querySelector('input[name="latitude"]');
-        var lngInput = document.querySelector('input[name="longitude"]');
+        var latInput = document.querySelector('input[id="data.latitude"]');
+        var lngInput = document.querySelector('input[id="data.longitude"]');
         
         if (latInput && lngInput) {
             latInput.value = lat;
@@ -39,8 +39,8 @@
     });
 
     // Set default marker if lat/long already exist
-    var existingLat = document.querySelector('input[name="latitude"]')?.value;
-    var existingLng = document.querySelector('input[name="longitude"]')?.value;
+    var existingLat = document.querySelector('input[id="data.latitude"]')?.value;
+    var existingLng = document.querySelector('input[id="data.longitude"]')?.value;
 
     if (existingLat && existingLng) {
         marker = L.marker([existingLat, existingLng]).addTo(map);

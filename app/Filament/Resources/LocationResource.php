@@ -12,6 +12,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Facades\Auth;
 
 class LocationResource extends Resource
 {
@@ -51,22 +52,30 @@ class LocationResource extends Resource
         //             ]),
         //     ]);
         return $form
-        ->schema([
-            Forms\Components\TextInput::make('place_name')
-                ->label('Place Name')
-                ->required(),
+            ->schema([
+                Forms\Components\TextInput::make('place_name')
+                    ->label('Place Name')
+                    ->required(),
 
-            Forms\Components\TextInput::make('latitude')
-                ->label('Latitude')
-                ->required(),
+                Forms\Components\TextInput::make('latitude')
+                    ->label('Latitude')
+                    // ->hidden() // Hide this input in the form
+                    ->disabled()
+                    ->required(),
 
-            Forms\Components\TextInput::make('longitude')
-                ->label('Longitude')
-                ->required(),
+                Forms\Components\TextInput::make('longitude')
+                    ->label('Longitude')
+                    // ->hidden() // Hide this input in the form
+                    ->disabled()
+                    ->required(),
+                // Automatically assign the authenticated user's ID to the user_id field
+                Forms\Components\Hidden::make('user_id')
+                    ->default(Auth::user()->id) // Set default to the authenticated user's ID()
+                    ->required(),
 
-            // Render the map as a View component
-            Forms\Components\View::make('components.map'),
-        ]);
+                // Render the map as a View component
+                Forms\Components\View::make('components.map'),
+            ]);
     }
 
     public static function table(Table $table): Table
