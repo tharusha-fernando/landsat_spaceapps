@@ -1,5 +1,15 @@
 <div id="map" style="height: 300px;"></div>
 
+<!-- Leaflet CSS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"  crossorigin="anonymous" />
+
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"  crossorigin="anonymous"></script>
+{{-- integrity="sha384-JxhK+SkSAfJYagLfihyJbG1Jp1wsPHLzlmrn/TXjqR6M5EGhB74xmrElnElw58Vw" --}}
+{{-- integrity="sha384-xodZBNTC5n17Xt2mL7bI5IQ9JIZQ5gpT0OTXKTgF5r6o3CzrNlTXEj+rUMqqvMkg" --}}
+{{-- integrity="sha384-xodZBNTC5n17Xt2mL7bI5IQ9JIZQ5gpT0OTXKTgF5r6o3CzrNlTXEj+rUMqqvMkg" --}}
+{{-- integrity="sha384-xodZBNTC5n17Xt2mL7bI5IQ9JIZQ5gpT0OTXKTgF5r6o3CzrNlTXEj+rUMqqvMkg" --}}
+
 <script>
     var map = L.map('map').setView([51.505, -0.09], 2);
 
@@ -34,4 +44,4 @@
         marker = L.marker([existingLat, existingLng]).addTo(map);
         map.setView([existingLat, existingLng], 12);
     }
-</script>
+</script

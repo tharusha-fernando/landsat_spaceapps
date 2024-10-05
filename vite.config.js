@@ -8,9 +8,4 @@ export default defineConfig({
             refresh: true,
         }),
     ],
-    content: [
-        './resources/**/*.blade.php',
-        './vendor/filament/**/*.blade.php',
-        './vendor/danharrin/filament-blog/resources/views/**/*.blade.php', // Your plugin's vendor directory
-    ],
 });

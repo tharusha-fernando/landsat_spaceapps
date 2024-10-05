@@ -25,31 +25,48 @@ class LocationResource extends Resource
         //     ->schema([
         //         //
         //     ]);
+        // return $form
+        //     ->schema([
+        //         Forms\Components\TextInput::make('place_name')
+        //             ->label('Place Name')
+        //             ->required(),
+
+        //         Forms\Components\TextInput::make('latitude')
+        //             ->label('Latitude')
+        //             ->required()
+        //             ->disabled(), // We will update it via the map
+
+        //         Forms\Components\TextInput::make('longitude')
+        //             ->label('Longitude')
+        //             ->required()
+        //             ->disabled(), // We will update it via the map
+
+        //         Forms\Components\Fieldset::make('Location Map')
+        //             ->schema([
+        //                 Forms\Components\View::make('components.map'),
+
+        //                 // Forms\Components\Html::make('map')
+        //                 //     ->html('<div id="map" style="height: 300px;"></div>')
+        //                 //     ->columnSpan(2),
+        //             ]),
+        //     ]);
         return $form
-            ->schema([
-                Forms\Components\TextInput::make('place_name')
-                    ->label('Place Name')
-                    ->required(),
+        ->schema([
+            Forms\Components\TextInput::make('place_name')
+                ->label('Place Name')
+                ->required(),
 
-                Forms\Components\TextInput::make('latitude')
-                    ->label('Latitude')
-                    ->required()
-                    ->disabled(), // We will update it via the map
+            Forms\Components\TextInput::make('latitude')
+                ->label('Latitude')
+                ->required(),
 
-                Forms\Components\TextInput::make('longitude')
-                    ->label('Longitude')
-                    ->required()
-                    ->disabled(), // We will update it via the map
+            Forms\Components\TextInput::make('longitude')
+                ->label('Longitude')
+                ->required(),
 
-                Forms\Components\Fieldset::make('Location Map')
-                    ->schema([
-                        Forms\Components\View::make('components.map'),
-
-                        // Forms\Components\Html::make('map')
-                        //     ->html('<div id="map" style="height: 300px;"></div>')
-                        //     ->columnSpan(2),
-                    ]),
-            ]);
+            // Render the map as a View component
+            Forms\Components\View::make('components.map'),
+        ]);
     }
 
     public static function table(Table $table): Table
