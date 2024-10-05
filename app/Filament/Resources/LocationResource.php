@@ -79,6 +79,7 @@ class LocationResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+        ->query(\App\Models\Location::where('user_id', Auth::user()->id))
             ->columns([
                 Tables\Columns\TextColumn::make('place_name')->label('Place Name'),
                 Tables\Columns\TextColumn::make('latitude')->label('Latitude'),
@@ -87,6 +88,10 @@ class LocationResource extends Resource
                 Tables\Columns\TextColumn::make('notification_method')->label('Notification Method'),
                 Tables\Columns\TextColumn::make('cloud_threshold')->label('Cloud Coverage (%)'),
             ])
+            // ->modifyQueryUsing(function(Builder $builder){
+            //     // Filter by user_id
+            //     return $builder->where('user_id', Auth::id());
+            // })
             ->filters([
                 //
             ])
