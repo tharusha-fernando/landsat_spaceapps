@@ -49,4 +49,12 @@ class User extends Authenticatable
     {
         return $this->hasMany(Location::class);
     }
+
+    public function apiTokens(){
+        return $this->hasMany(ApiToken::class);
+    }
+
+    public function apiToken(){
+        return $this->hasOne(ApiToken::class)->latest();
+    }
 }

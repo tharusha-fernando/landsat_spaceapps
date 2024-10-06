@@ -69,7 +69,8 @@ class LocationResource extends Resource
                 // Automatically assign the authenticated user's ID to the user_id field
                 Forms\Components\Hidden::make('user_id')
                     ->default(Auth::user()->id)
-                    ->required(),
+                    ->required(),//.
+                    // ->exists(),
 
                 // Render the map as a View component
                 Forms\Components\View::make('components.map'),
