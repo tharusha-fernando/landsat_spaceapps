@@ -87,7 +87,7 @@ class LocationResource extends Resource
                 Tables\Columns\TextColumn::make('longitude')->label('Longitude'),
                 Tables\Columns\TextColumn::make('lead_time')->label('Lead Time (minutes)'),
                 Tables\Columns\TextColumn::make('notification_method')->label('Notification Method'),
-                Tables\Columns\TextColumn::make('cloud_threshold')->label('Cloud Coverage (%)'),
+                // Tables\Columns\TextColumn::make('cloud_threshold')->label('Cloud Coverage (%)'),
             ])
             // ->modifyQueryUsing(function(Builder $builder){
             //     // Filter by user_id
